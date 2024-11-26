@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
     chatId: {
-      type: String,
+      type: Number,
       required: true,
       uniqe: true,
     },
