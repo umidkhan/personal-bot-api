@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/chatId", async (req, res) => {
   const { chatId } = req.query;
   if (!chatId) {
     return res.status(400).json({ error: "chatId required" });
