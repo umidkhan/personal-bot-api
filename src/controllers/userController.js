@@ -61,6 +61,19 @@ const getUser = async (req, res) => {
   }
 };
 
+const getUserWithChatId = async (req, res) => {
+  try {
+    const user = await UserModel.findOne({chatId: req.params.chatId});
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json(user);
+  } catch (err) {
+    console.log(err, "get user with chat id error");
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
 const updateUser = async (req, res) => {
   try {
     const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, {
@@ -96,4 +109,5 @@ module.exports = {
   updateUser,
   deleteUser,
   getStats,
+  getUserWithChatId
 };
